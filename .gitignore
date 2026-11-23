@@ -1,0 +1,17 @@
+/*.exe
+/*.out
+/*.o
+/*.obj
+/build/
+/bin/
+
+# Arquivos temporarios de editores
+*.swp
+*.swo
+*~
+
+# Arquivos do sistema operacional
+.DS_Store
+Thumbs.db
+Desktop.ini
+/.github
