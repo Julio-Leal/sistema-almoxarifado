@@ -7,8 +7,10 @@ try {
     $casos = @(
         @{
             Nome = 'ABB'
-            Fontes = @('tests\test_arvore.c', 'src\arvore.c')
-        },
+            Fontes = @(
+                'tests\test_arvore.c', 'src\arvore.c', 'src\inicializacao.c'
+            )
+        }, #Júlio - 24-11-2026
         @{
             Nome = 'Fila'
             Fontes = @('tests\test_fila.c', 'src\fila.c')
