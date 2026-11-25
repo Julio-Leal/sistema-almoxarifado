@@ -48,7 +48,10 @@ try {
     foreach ($caso in $casos) {
         $executavel = Join-Path $env:TEMP ("almoxarifado-{0}.exe" -f [guid]::NewGuid())
         $executaveisTemporarios += $executavel
-        Write-Output "===== Testes: $($caso.Nome) ====="
+        #julio
+        Write-Host "`n========================================" -ForegroundColor Cyan
+        Write-Host " TESTANDO: $($caso.Nome)" -ForegroundColor Cyan
+        Write-Host "========================================" -ForegroundColor Cyan
 
         & gcc -std=c11 -Wall -Wextra -Wpedantic -I include @($caso.Fontes) @($caso.ArgumentosLinker) -o $executavel
         if ($LASTEXITCODE -ne 0) {
@@ -73,6 +76,8 @@ try {
         if ($caso.Nome -eq 'Processamento') {
             Write-Output $saida
         }
+        #julio
+        Write-Host "[OK] $($caso.Nome) - APROVADO" -ForegroundColor Green
 
         Remove-Item -LiteralPath $executavel -Force
     }
@@ -170,7 +175,14 @@ try {
 
     Write-Output 'Teste de EOF passou.'
     Write-Output 'Teste da opção de saída passou.'
-    Write-Output 'Todos os testes passaram.'
+    #julio
+    Write-Host ""
+    Write-Host "========================================" -ForegroundColor Cyan
+    Write-Host "       RESULTADO FINAL DOS TESTES" -ForegroundColor Cyan
+    Write-Host "========================================" -ForegroundColor Cyan
+    Write-Host ""
+    Write-Host "  TODOS OS TESTES FORAM APROVADOS!" -ForegroundColor Green
+    Write-Host ""
 } finally {
     foreach ($executavelTemporario in $executaveisTemporarios) {
         if (Test-Path -LiteralPath $executavelTemporario) {
